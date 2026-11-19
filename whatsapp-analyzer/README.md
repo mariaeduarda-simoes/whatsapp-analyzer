@@ -4,6 +4,14 @@ API em Python (FastAPI) que recebe uma conversa exportada do WhatsApp (`.txt`) e
 
 > Nenhum dado é salvo: o arquivo é processado na hora e descartado.
 
+## Demonstração
+
+### Resposta da API
+![Resposta da API](analise.png)
+
+### Gráfico de mensagens por horário
+![Gráfico de mensagens por horário](grafico.png)
+
 ## O que ela faz
 
 - Conta mensagens por pessoa
