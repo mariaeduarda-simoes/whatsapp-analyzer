@@ -6,9 +6,6 @@ API em Python (FastAPI) que recebe uma conversa exportada do WhatsApp (`.txt`) e
 
 ## Demonstração
 
-### Resposta da API
-![Resposta da API](analise.png)
-
 ### Gráfico de mensagens por horário
 ![Gráfico de mensagens por horário](grafico.png)
 
