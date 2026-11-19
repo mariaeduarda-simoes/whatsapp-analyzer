@@ -1,76 +1,112 @@
 # WhatsApp Analyzer
 
-API em Python (FastAPI) que recebe uma conversa exportada do WhatsApp (`.txt`) e devolve estatísticas e um gráfico.
+Projeto desenvolvido em Python para analisar conversas exportadas do WhatsApp. A partir de um arquivo `.txt`, a API processa as mensagens e apresenta algumas informações sobre a conversa, como quantidade de mensagens por pessoa, horários de maior atividade e palavras mais utilizadas.
 
-> Nenhum dado é salvo: o arquivo é processado na hora e descartado.
+## Prévia
 
-## Demonstração
+**Mensagens por horário**
 
-### Gráfico de mensagens por horário
 ![Gráfico de mensagens por horário](grafico.png)
 
-## O que ela faz
+## Funcionalidades
 
-- Conta mensagens por pessoa
-- Descobre o horário de pico
-- Mostra mensagens por mês
-- Lista as palavras mais usadas
-- Gera um gráfico de mensagens por horário
+- Total de mensagens da conversa.
+- Quantidade de mensagens enviadas por cada pessoa.
+- Horário com maior número de mensagens.
+- Histórico de mensagens por mês.
+- Palavras mais utilizadas.
+- Gráfico de mensagens por horário.
 
 ## Tecnologias
 
-Python, FastAPI, pandas, matplotlib, pytest
+- Python
+- FastAPI
+- Pandas
+- Matplotlib
+- Pytest
 
-## Como rodar
+## Executando o projeto
+
+Clone o repositório:
+
+```bash
+git clone https://github.com/mariaeduarda-simoes/whatsapp-analyzer.git
+cd whatsapp-analyzer
+```
+
+Crie o ambiente virtual e instale as dependências:
 
 ```bash
 python -m venv venv
-venv\Scripts\activate          # Windows
+venv\Scripts\activate
 pip install -r requirements.txt
+```
+
+Inicie a API:
+
+```bash
 uvicorn app.main:app --reload
 ```
 
-Abra http://127.0.0.1:8000/docs para testar pela página automática da API.
+Depois, acesse http://127.0.0.1:8000/docs para testar os endpoints.
 
-## Endpoints
+## Rotas disponíveis
 
-| Método | Rota | O que faz |
+| Método | Rota | Descrição |
 |---|---|---|
-| GET | `/saude` | Confirma que a API está no ar |
-| POST | `/analisar` | Recebe o `.txt` e devolve as estatísticas em JSON |
-| POST | `/grafico/horarios` | Recebe o `.txt` e devolve um gráfico PNG |
+| GET | `/saude` | Verifica se a API está funcionando. |
+| POST | `/analisar` | Analisa a conversa e retorna os resultados em JSON. |
+| POST | `/grafico/horarios` | Gera um gráfico em PNG. |
 
-## Exemplo de resposta (`/analisar`)
+## Exemplo de retorno
 
 ```json
 {
   "total_mensagens": 13,
-  "mensagens_por_autor": {"Ana": 7, "Bruno": 6},
+  "mensagens_por_autor": {
+    "Ana": 7,
+    "Bruno": 6
+  },
   "horario_de_pico": 8,
-  "mensagens_por_mes": {"2026-11": 13},
-  "palavras_mais_usadas": [{"palavra": "aula", "vezes": 2}]
+  "mensagens_por_mes": {
+    "2026-11": 13
+  },
+  "palavras_mais_usadas": [
+    {
+      "palavra": "aula",
+      "vezes": 2
+    }
+  ]
 }
 ```
 
 ## Testes
 
+Os testes podem ser executados com:
+
 ```bash
 pytest
 ```
 
-## Estrutura
+## Estrutura dos arquivos
 
-```
+```text
 app/
-  main.py      # a API e os endpoints
-  parser.py    # lê o .txt e monta a tabela
-  analise.py   # calcula as estatísticas
+├── main.py
+├── parser.py
+└── analise.py
+
 tests/
-  test_parser.py
+└── test_parser.py
+
 exemplos/
-  conversa_teste.txt   # conversa fictícia
+└── conversa_teste.txt
 ```
 
-## Autora
+## Sobre o projeto
 
-Maria Eduarda Simoes Silva
+O WhatsApp Analyzer foi desenvolvido como um projeto de estudo e prática com Python, processamento de arquivos e criação de APIs utilizando FastAPI.
+
+Os arquivos enviados são processados durante a requisição e não ficam armazenados pela aplicação.
+
+**Desenvolvido por Maria Eduarda Simoes Silva.**
